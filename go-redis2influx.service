@@ -1,0 +1,16 @@
+[Unit]
+Description=go-redis2influx v.1.0.0
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/go-redis2influx
+Restart=always
+User=root
+Type=simple
+Restart=on-failure
+KillMode=control-group
+PIDFile=/var/lib/bimap-ipoc/go-redis2influx.pid
+
+[Install]
+WantedBy=multi-user.target
+Alias=go-redis2influx.service

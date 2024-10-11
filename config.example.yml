@@ -1,0 +1,33 @@
+influxdb:
+  url: "http://10.99.1.131:8086"
+  org: "master"
+  bucket: "telegraf-redis"
+  token: "4-Z-WuwUTh74YXnGleK4Oab7Re86bpwBz-JFXLIl86BtYDt1RAMuNUkTT0e_MKftdqedZxDZX-_kv35KnB03ng=="
+  options:
+    set_batch_size: 5000
+    set_log_level: 1
+    set_use_gzip: true
+    set_flush_interval: 3000
+    set_max_retries: 5
+    set_max_retry_time: 180000
+    set_retry_interval: 5000
+    set_http_request_timeout: 600
+    set_application_name: "go-redis2influx-api"
+
+redis:
+  address: "10.99.1.124:6379" # Redis 地址和端口
+  db: 0 # Redis 資料庫編號
+  group_name: "line_protocol_group" # 消費者群組名稱
+  consumer_name: "http_consumer" # 消費者名稱
+  stream_key: "line_protocol_stream" # Redis Stream 的鍵名
+  message_field: "data" # Stream 消息中存放數據的字段名稱
+  count: 1000 # 每次讀取的最大消息數量
+  block_ms: 1000 # 阻塞時間（以毫秒為單位），例如 1000 表示 1 秒
+  retry_delay: 5 # 重試延遲時間（以秒為單位）
+
+log:
+  level: "info"
+  path: "./log"
+  maxsize: 2 # mb
+  maxage: 30 # days
+
